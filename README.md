@@ -5,7 +5,7 @@ It aggregates simple links on some specific subreddits and posts them to the  [@
 
 ##Requirements
 
-The music bot requires Python 3.3 plus and the following imports. I recommend making a venv with pip3 for installs.
+The music bot requires Python 3.3+ and the following imports. I recommend making a venv with pip3 for installs.
 
 
 * tweepy
