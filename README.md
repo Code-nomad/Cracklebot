@@ -10,8 +10,6 @@ The music bot requires Python 3.3+ and the following imports. I recommend making
 
 * tweepy
 * time
-* sys 
 * re
-* os
 * pickle
 * praw
