@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-import praw, tweepy, time, sys, re, os, pickle
+#! python
+import praw, tweepy, time, re, pickle
 
 postedTweetsarray = []
 
@@ -13,7 +13,7 @@ def listenToThis():
     subreddit = r.get_subreddit("listentothis")
 
     for submission in subreddit.get_hot(limit=23):
-        if (isMusic(submission.url,submission.title) == True) :
+        if (isMusic(submission.url,submission.title)):
             tweetPost(submission.title,submission.url,submission.link_flair_text)
 
 def music():
@@ -21,7 +21,7 @@ def music():
     PostFlair = ''
 
     for submission in subreddit.get_hot(limit=20):
-        if (isMusic(submission.url,submission.title) == True):
+        if (isMusic(submission.url,submission.title)):
             if ('music streaming' in submission.link_flair_text) or ('stream' in submission.link_flair_text):
                 PostFlair = submission.title
                 PostFlair = PostFlair[PostFlair.find("[")+1:PostFlair.find("]")]
@@ -31,7 +31,7 @@ def indieHeads():
     subreddit = r.get_subreddit("indieheads")
 
     for submission in subreddit.get_hot(limit=20):
-        if (isMusic(submission.url,submission.title) == True):
+        if (isMusic(submission.url,submission.title)):
             if('Fresh' in submission.title) or('fresh' in submission.title)or('FRESH' in submission.title)or('ORIGINAL' in submission.title)or('Original' in submission.title) or ('original' in submission.title):
                 tweetPost(submission.title,submission.url,"Indie")
 
@@ -39,7 +39,7 @@ def hiphopHeads():
     subreddit = r.get_subreddit("hiphopheads")
 
     for submission in subreddit.get_hot(limit=20):
-        if (isMusic(submission.url,submission.title) == True) :
+        if (isMusic(submission.url,submission.title)):
             if('Fresh' in submission.title) or('fresh' in submission.title)or('FRESH' in submission.title)or('ORIGINAL' in submission.title)or('Original' in submission.title) or ('original' in submission.title):
                 tweetPost(submission.title,submission.url,'hiphop')
 
@@ -48,7 +48,7 @@ def electronicMusic():
     PostFlair = 'electronic'
 
     for submission in subreddit.get_hot(limit=20):
-        if (isMusic(submission.url,submission.title) == True) :
+        if (isMusic(submission.url,submission.title)):
             tweetPost(submission.title,submission.url,PostFlair)
 
 #twitter bot function
@@ -82,7 +82,7 @@ def tweetPost(title,url,flair):
     if (tweet in postedTweetsarray):
         nonDuplicateFlag = False
     
-    if (nonDuplicateFlag == True):
+    if (nonDuplicateFlag):
 
         try:
             api.update_status(tweet)#add tweet to timeline
@@ -108,14 +108,14 @@ def tweetCleanup(returnTweet):
     return returnTweet
 
 def isMusic(URL, title):
-    if ('youtube.com' in URL) or ('soundcloud.com' in URL) or ('spotify.com' in URL) or ('bandcamp.com' in URL) :
+    if ('youtube.com' in URL) or ('soundcloud.com' in URL) or ('spotify.com' in URL) or ('bandcamp.com' in URL):
         if('playlist' in title) or ( 'Playlist' in title):#check if playlist link or not. If playlist detected the link is discarded
             return False
         else:
             return True
 
+#Main runtime function
 
-#DB operations (the tweets are saved to prevent doubles)
 def initDB():
 
     global postedTweetsarray
@@ -129,8 +129,7 @@ def updateDB():
     global postedTweetsarray
     with open('posts.DAT', 'wb+') as f:
         pickle.dump(postedTweetsarray, f)
-
-#Main runtime function        
+        
 if __name__ == "__main__":
     initDB()
     while True:
