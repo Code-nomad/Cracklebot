@@ -1,7 +1,7 @@
 # Cracklebot
 
 Finding music can be a time consuming process. Cracklebox puts all effort into finding music so you don't have to.
-It aggregates simple links on some specific subreddits and posts them to the @cracklebox Twitter account.
+It aggregates simple links on some specific subreddits and posts them to the  [@cracklebox](https://twitter.com/cracklebox) Twitter account.
 
 ##Requirements
 
