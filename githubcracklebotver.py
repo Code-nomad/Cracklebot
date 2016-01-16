@@ -1,9 +1,14 @@
 #! python
+<<<<<<< HEAD
 import time
 import re
 import pickle
 import praw
 import tweepy
+=======
+import praw, tweepy, time, re, pickle
+
+>>>>>>> origin/master
 postedTweetsarray = []
 
 
@@ -18,8 +23,13 @@ def listentothis():
     subreddit = redditObj.get_subreddit("listentothis")
 
     for submission in subreddit.get_hot(limit=23):
+<<<<<<< HEAD
         if is_music(submission.url, submission.title):
             tweet_post(submission.title, submission.url, submission.link_flair_text)
+=======
+        if (isMusic(submission.url,submission.title)):
+            tweetPost(submission.title,submission.url,submission.link_flair_text)
+>>>>>>> origin/master
 
 def music():
     """Search for posts in music subreddit"""
@@ -27,7 +37,11 @@ def music():
     postFlair = ''
 
     for submission in subreddit.get_hot(limit=20):
+<<<<<<< HEAD
         if is_music(submission.url, submission.title):
+=======
+        if (isMusic(submission.url,submission.title)):
+>>>>>>> origin/master
             if ('music streaming' in submission.link_flair_text) or ('stream' in submission.link_flair_text):
                 postFlair = submission.title
                 postFlair = postFlair[postFlair.find("[")+1:postFlair.find("]")]
@@ -37,7 +51,11 @@ def indieheads():
     subreddit = redditObj.get_subreddit("indieheads")
 
     for submission in subreddit.get_hot(limit=20):
+<<<<<<< HEAD
         if is_music(submission.url, submission.title):
+=======
+        if (isMusic(submission.url,submission.title)):
+>>>>>>> origin/master
             if('Fresh' in submission.title) or('fresh' in submission.title)or('FRESH' in submission.title)or('ORIGINAL' in submission.title)or('Original' in submission.title) or ('original' in submission.title):
                 tweet_post(submission.title, submission.url, "Indie")
 def hiphopheads():
@@ -45,7 +63,11 @@ def hiphopheads():
     subreddit = redditObj.get_subreddit("hiphopheads")
 
     for submission in subreddit.get_hot(limit=20):
+<<<<<<< HEAD
         if is_music(submission.url, submission.title):
+=======
+        if (isMusic(submission.url,submission.title)):
+>>>>>>> origin/master
             if('Fresh' in submission.title) or('fresh' in submission.title)or('FRESH' in submission.title)or('ORIGINAL' in submission.title)or('Original' in submission.title) or ('original' in submission.title):
                 tweet_post(submission.title, submission.url, 'hiphop')
 def electronicmusic():
@@ -54,8 +76,14 @@ def electronicmusic():
     postFlair = 'electronic'
 
     for submission in subreddit.get_hot(limit=20):
+<<<<<<< HEAD
         if is_music(submission.url, submission.title):
             tweet_post(submission.title, submission.url, postFlair)
+=======
+        if (isMusic(submission.url,submission.title)):
+            tweetPost(submission.title,submission.url,PostFlair)
+
+>>>>>>> origin/master
 #twitter bot function
 def tweet_post(title, url, flair):
     """Post found tweets to twitter"""
@@ -86,6 +114,10 @@ def tweet_post(title, url, flair):
         nonDuplicateFlag = False
     
     if (nonDuplicateFlag):
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         try:
             api.update_status(tweet)#add tweet to timeline
         except:
@@ -113,11 +145,18 @@ def tweet_cleanup(returnTweet):
     returnTweet = re.sub('#[\w]{3}[-][\w]{3}', '#hiphop', returnTweet)
     #turn hip-hop into hiphop for hashtag handling
     return returnTweet
+<<<<<<< HEAD
 def is_music(url, title):
     """check if reddit post is playlist"""
     if ('youtube.com' in url) or ('soundcloud.com' in url) or ('spotify.com' in url) or ('bandcamp.com' in url):
         if('playlist' in title) or ('Playlist' in title):
         #check if playlist link or not. If playlist detected the link is discarded
+=======
+
+def isMusic(URL, title):
+    if ('youtube.com' in URL) or ('soundcloud.com' in URL) or ('spotify.com' in URL) or ('bandcamp.com' in URL):
+        if('playlist' in title) or ( 'Playlist' in title):#check if playlist link or not. If playlist detected the link is discarded
+>>>>>>> origin/master
             return False
         else:
             return True
