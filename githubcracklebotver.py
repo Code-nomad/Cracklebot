@@ -1,4 +1,4 @@
-#! python
+#!/usr/bin/python3
 import praw, tweepy, time, sys, re, os, pickle
 
 postedTweetsarray = []
