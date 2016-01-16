@@ -114,8 +114,8 @@ def isMusic(URL, title):
         else:
             return True
 
-#Main runtime function
 
+#DB operations (the tweets are saved to prevent doubles)
 def initDB():
 
     global postedTweetsarray
@@ -129,7 +129,8 @@ def updateDB():
     global postedTweetsarray
     with open('posts.DAT', 'wb+') as f:
         pickle.dump(postedTweetsarray, f)
-        
+
+#Main runtime function        
 if __name__ == "__main__":
     initDB()
     while True:
