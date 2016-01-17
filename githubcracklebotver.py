@@ -38,7 +38,7 @@ def indieheads():
 
     for submission in subreddit.get_hot(limit=20):
         if is_music(submission.url, submission.title):
-            if('Fresh' in submission.title) or('fresh' in submission.title)or('FRESH' in submission.title)or('ORIGINAL' in submission.title)or('Original' in submission.title) or ('original' in submission.title):
+            if('fresh' in submission.title.lower() or('original' in submission.title.lower())):
                 tweet_post(submission.title, submission.url, "Indie")
 def hiphopheads():
     """Search for posts in hiphopheads subreddit"""
